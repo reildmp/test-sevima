@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Environment files
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Uploads (keep folder structure but ignore uploaded files)
+backend/uploads/posts/*
+!backend/uploads/posts/.gitkeep
+!backend/uploads/default-avatar.svg
+
+# Logs
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Database
+*.sql.backup
+*.db
+
+# PHP
+composer.lock
