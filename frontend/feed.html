@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="InstaApp - Your social feed">
+    <title>Feed - InstaApp</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/feed.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">InstaApp</h1>
+            
+            <div class="nav-links">
+                <button class="nav-link active">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span>Home</span>
+                </button>
+                
+                <button class="nav-link" id="createPostBtn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <span>Create</span>
+                </button>
+                
+                <button class="nav-link" id="logoutBtn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Feed -->
+    <main class="feed-container">
+        <!-- Loading Spinner -->
+        <div id="loading" class="flex-center" style="padding: 64px;">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Feed Posts -->
+        <div id="feedContainer"></div>
+    </main>
+
+    <!-- Create Post Modal -->
+    <div id="createPostModal" class="modal-overlay hidden" onclick="if(event.target === this) closeCreatePostModal()">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Create New Post</h2>
+                <button class="modal-close" onclick="closeCreatePostModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="createPostForm">
+                    <!-- Image Preview -->
+                    <div id="imagePreviewContainer" class="image-preview-container hidden">
+                        <img id="imagePreview" src="" alt="Preview" class="image-preview">
+                        <button type="button" class="remove-image" onclick="removeImage()">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Image Upload -->
+                    <div class="form-group">
+                        <label class="form-label">Image</label>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="imageInput" accept="image/*">
+                            <label for="imageInput" class="file-input-label">
+                                <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <div>
+                                    <div style="font-weight: 600; margin-bottom: 4px;">Choose an image</div>
+                                    <div style="font-size: 0.875rem; color: var(--text-secondary);">JPG, PNG, GIF, WEBP</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Caption -->
+                    <div class="form-group">
+                        <label for="caption" class="form-label">Caption</label>
+                        <textarea 
+                            id="caption" 
+                            class="form-textarea" 
+                            placeholder="Write a caption..."
+                            rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Share Post
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/feed.js"></script>
+</body>
+</html>
