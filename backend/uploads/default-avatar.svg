@@ -1,0 +1,20 @@
+<!-- Default Avatar SVG -->
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="100" fill="url(#avatarGradient)"/>
+  
+  <!-- User Icon -->
+  <g fill="white">
+    <!-- Head -->
+    <circle cx="100" cy="75" r="30"/>
+    <!-- Body -->
+    <path d="M 100 105 Q 70 105 55 130 Q 50 140 50 160 L 150 160 Q 150 140 145 130 Q 130 105 100 105 Z"/>
+  </g>
+</svg>
